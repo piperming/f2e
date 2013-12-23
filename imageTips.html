@@ -1,0 +1,22 @@
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="./tipsImage.js"></script>
+<style>
+#big-pic{position:absolute; padding:4px; background:#E5E5E5; border-radius: 3px;  z-index:999;}
+#big-pic .big-pic-box{position: relative; text-indent:0;}
+#big-pic .big-pic-box img{float:left;}
+#big-pic .big-pic-box em{position: absolute; display: block; width: 0; height: 0; overflow: hidden; border-width: 8px; border-style:solid dashed none dashed; border-color: #E5E5E5 transparent transparent transparent;}
+#big-pic .big-pic-box em.arrow-down{border-style:solid dashed none dashed; border-color: #E5E5E5 transparent transparent transparent;}
+#big-pic .big-pic-box em.arrow-up{border-style:none dashed solid dashed; border-color:transparent transparent #E5E5E5 transparent;}
+</style>
+</head>
+<body>
+<img id="small-pic" src="https://www.google.com/images/srpr/logo11w.png" width=40 height=40/>
+<script type="text/javascript">
+$(function(){
+    showImage('#small-pic', 200, 100);
+});
+</script>
+</body>
+</html>
