@@ -3,6 +3,11 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="http://yubei.github.io/f2e/js/imageTips.js"></script>
 <style>
+#warp{width:600px; height:200px; margin:0 auto;}
+#warp img{float:left;}
+/*
+ *大图样式
+ */
 #big-pic{position:absolute; padding:4px; background:#E5E5E5; border-radius: 3px;  z-index:999;}
 #big-pic .big-pic-box{position: relative; text-indent:0;}
 #big-pic .big-pic-box img{float:left;}
@@ -12,10 +17,24 @@
 </style>
 </head>
 <body>
-<img id="small-pic" src="https://www.google.com/images/srpr/logo11w.png" width=40 height=40/>
+<div id="warp">
+  <img id="small-pic1" src="./image/fllower.png" width=40 style="cursor:pointer;"/></br>
+  <p>根据可显示高度自动向下展示,等比缩略不超过600*600</p>
+  <code>
+    代码示例：showImage('#small-pic1', 600, 600);
+  </code>
+</div>
+<div id="warp">
+  <img id="small-pic2" src="./image/fllower.png" width=40 style="cursor:pointer;"/></br>
+  <p>根据可显示高度自动向上展示,等比缩略不超过200*600</p>
+  <code>
+    代码示例：showImage('#small-pic2', 200, 600);
+  </code>
+</div>
 <script type="text/javascript">
 $(function(){
-    showImage('#small-pic', 200, 100);
+    showImage('#small-pic1', 600, 600);
+    showImage('#small-pic2', 200, 600);
 });
 </script>
 </body>

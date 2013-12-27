@@ -51,6 +51,6 @@ function showImage (name, MaxWidth, MaxHeight) {
 		$(this).after(tpl);
 	});
 	$(name).mouseleave(function(){
-	//	$('#big-pic').remove();
+		$('#big-pic').remove();
 	});
 }
