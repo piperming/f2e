@@ -1,0 +1,49 @@
+<html>
+<head>
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
+<script type="text/javascript" src="http://yubei.github.io/f2e/js/imageTips.js"></script>
+<style>
+@keyframes "heartPulse"{0%{transform:scale(1)} 50%{transform:scale(.9)} 100%{transform:scale(1)}}@-moz-keyframes heartPulse{0%{-moz-transform:scale(1)} 50%{-moz-transform:scale(.9)} 100%{-moz-transform:scale(1)}}@-webkit-keyframes "heartPulse"{0%{-webkit-transform:scale(1)} 50%{-webkit-transform:scale(.9)} 100%{-webkit-transform:scale(1)}}@-ms-keyframes "heartPulse"{0%{-ms-transform:scale(1)} 50%{-ms-transform:scale(.9)} 100%{-ms-transform:scale(1)}}@-o-keyframes "heartPulse"{0%{-o-transform:scale(1)} 50%{-o-transform:scale(.9)} 100%{-o-transform:scale(1)}}
+.rotate8{-webkit-transform: rotate(8deg); -moz-transform: rotate(8deg); -o-transform: rotate(8deg); -ms-transform: rotate(8deg); transform: rotate(8deg); }
+.rotate-8{-webkit-transform: rotate(-8deg); -moz-transform: rotate(-8deg); -o-transform: rotate(-8deg); -ms-transform: rotate(-8deg); transform: rotate(-8deg); }
+.warp{width:740px; height:320px; position:relative; margin:0 auto; margin-top:140px;}
+.pic-bg{width:740px; height:320px; position:absolute; left:0; top:0; background:#000;  opacity:.6;}
+.heart-bg{width:75px; height:85px; margin:0 auto;  position:absolute; left:520px; top:100px; background:url(./image/A1-08.png);
+}
+.heart-bg i{display:block; width:43px; height:39px; position:absolute; top:25px; left:16px; background:url(./image/A1-09.png); cursor:pointer;}
+.heart-bg i{-webkit-animation:heartPulse 1.5s infinite;-moz-animation:heartPulse 1.5s infinite;-ms-animation:heartPulse 1.5s infinite;-o-animation:heartPulse 1.5s infinite;animation:heartPulse 1.5s infinite}
+</style>
+</head>
+<body>
+<div class="warp">
+  <a href="####">
+    <img src="./image/shoes.jpg" width="740" height="320">"
+  </a>
+  <div class="pic-bg"></div>
+  <div class="heart-bg rotate8" style="display:none;">
+      <i></i>
+  </div>
+</div>
+<script type="text/javascript">
+$(function(){
+    $('.warp').mouseover(function(){
+        $('.heart-bg').show().animate(
+          {left: 480, transform: 0},
+          300
+        );
+    });
+    $('.heart-bg i').click(function(){
+      $(this).animate(
+        {top: -100, opacity: 'hide' }, 
+        500,
+        '',
+        function(){
+          //$('.heart-bg').hide();
+          $(this).css('top', 25).show();
+        }
+      );
+    });
+});
+</script>
+</body>
+</html>
