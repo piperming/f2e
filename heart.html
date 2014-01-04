@@ -3,42 +3,58 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.9.1.min.js"></script>
 <script type="text/javascript" src="http://yubei.github.io/f2e/js/imageTips.js"></script>
 <style>
+*{margin:0; padding:0;}
 @keyframes "heartPulse"{0%{transform:scale(1)} 50%{transform:scale(.9)} 100%{transform:scale(1)}}@-moz-keyframes heartPulse{0%{-moz-transform:scale(1)} 50%{-moz-transform:scale(.9)} 100%{-moz-transform:scale(1)}}@-webkit-keyframes "heartPulse"{0%{-webkit-transform:scale(1)} 50%{-webkit-transform:scale(.9)} 100%{-webkit-transform:scale(1)}}@-ms-keyframes "heartPulse"{0%{-ms-transform:scale(1)} 50%{-ms-transform:scale(.9)} 100%{-ms-transform:scale(1)}}@-o-keyframes "heartPulse"{0%{-o-transform:scale(1)} 50%{-o-transform:scale(.9)} 100%{-o-transform:scale(1)}}
-.rotate8{-webkit-transform: rotate(8deg); -moz-transform: rotate(8deg); -o-transform: rotate(8deg); -ms-transform: rotate(8deg); transform: rotate(8deg); }
-.rotate-8{-webkit-transform: rotate(-8deg); -moz-transform: rotate(-8deg); -o-transform: rotate(-8deg); -ms-transform: rotate(-8deg); transform: rotate(-8deg); }
 .warp{width:740px; height:320px; position:relative; margin:0 auto; margin-top:140px;}
-.pic-bg{width:740px; height:320px; position:absolute; left:0; top:0; background:#000;  opacity:.6;}
-.heart-bg{width:75px; height:85px; margin:0 auto;  position:absolute; left:520px; top:100px; background:url(./image/A1-08.png);
-}
-.heart-bg i{display:block; width:43px; height:39px; position:absolute; top:25px; left:16px; background:url(./image/A1-09.png); cursor:pointer;}
-.heart-bg i{-webkit-animation:heartPulse 1.5s infinite;-moz-animation:heartPulse 1.5s infinite;-ms-animation:heartPulse 1.5s infinite;-o-animation:heartPulse 1.5s infinite;animation:heartPulse 1.5s infinite}
+.pic-bg{width:740px; height:320px; position:absolute; left:0; top:0; background:#000; filter:alpha(opacity=0); opacity:0;}
+.pic-bg{-webkit-transition: all .3s ease-out; -moz-transition: all .3s ease-out; -ms-transition: all .3s ease-out; -o-transition: all .3s ease-out; transition: all .3s ease-out;}
+.diamond-small, .diamond-big{-webkit-transition: all .2s ease-out; -moz-transition: all .2s ease-out; -ms-transition: all .2s ease-out; -o-transition: all .2s ease-out; transition: all .2s ease-out;}
+.diamond-small{width:75px; height:85px; margin:0 auto; opacity:0; position:absolute; left:515px; top:100px; background:url(./image/A1-08.png);}
+.diamond-small{-webkit-transform: rotate(8deg); -moz-transform: rotate(8deg); -o-transform: rotate(8deg); -ms-transform: rotate(8deg); transform: rotate(8deg);}
+.diamond-small i{display:block; width:43px; height:39px; position:absolute; top:25px; left:16px; background:url(./image/A1-09.png); cursor:pointer;}
+.diamond-big{width:180px; height:205px; opacity:0; position:absolute; left:276px; top:68px; background:url(./image/A1-07.png); color:#FFFFFF;}
+.diamond-big{-webkit-transform: rotate(-8deg); -moz-transform: rotate(-8deg); -o-transform: rotate(-8deg); -ms-transform: rotate(-8deg); transform: rotate(-8deg); }
+.diamond-big p{margin:0 auto; margin-top: 60px; width: 130px; text-align: center; height: 30px; line-height: 30px; border-bottom: 1px solid #FFFFFF;}
+.diamond-big  strong{display:block; margin:0 auto; width:130px; height:60px; text-align: center; line-height:60px; font-size:26px;}
+.img-filter .pic-bg{filter:alpha(opacity=60); opacity:.6;}
+.img-filter .pic{-webkit-filter:blur(2px);-moz-filter:blur(2px);-o-filter:blur(2px);filter:blur(2px)}
+.img-filter .diamond-small{opacity:1; left:490px; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); }
+.img-filter .diamond-big{opacity:1; left:306px; -webkit-transform: rotate(0deg); -moz-transform: rotate(0deg); -o-transform: rotate(0deg); -ms-transform: rotate(0deg); transform: rotate(0deg); }
+.diamond-small i{-webkit-animation:heartPulse 1.5s infinite;-moz-animation:heartPulse 1.5s infinite;-ms-animation:heartPulse 1.5s infinite;-o-animation:heartPulse 1.5s infinite;animation:heartPulse 1.5s infinite}
 </style>
 </head>
 <body>
 <div class="warp">
   <a href="####">
-    <img src="./image/shoes.jpg" width="740" height="320">"
+    <img class="pic" src="./image/shoes.jpg" width="740" height="320">"
   </a>
   <div class="pic-bg"></div>
-  <div class="heart-bg rotate8" style="display:none;">
-      <i></i>
+  <div class="diamond-small">
+        <i></i>
+  </div>
+  <div class="diamond-big">
+        <p>UGG</p>
+        <strong>奢华舒适</strong>
   </div>
 </div>
 <script type="text/javascript">
 $(function(){
-    $('.warp').mouseover(function(){
-        $('.heart-bg').show().animate(
-          {left: 480, transform: 0},
-          300
-        );
-    });
-    $('.heart-bg i').click(function(){
+   $('.warp').hover(
+        function() { 
+            $(this).addClass('img-filter');
+        },
+        function() {
+            $(this).removeClass('img-filter');
+        }
+    );
+    
+    $('.diamond-small i').click(function(){
       $(this).animate(
         {top: -100, opacity: 'hide' }, 
         500,
         '',
         function(){
-          //$('.heart-bg').hide();
+          //$('.diamond-small').hide();
           $(this).css('top', 25).show();
         }
       );
